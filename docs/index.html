@@ -1,1 +1,43 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Segment Test Page</title><script>!function(){var a=window.analytics=window.analytics||[];if(!a.initialize){a.load=function(k,c){var s=document.createElement("script");s.src=(c?.cdnURL||"https://cdn.segment.com")+"/analytics.js/v1/"+k+"/analytics.min.js";s.async=1;var f=document.getElementsByTagName("script")[0];f.parentNode.insertBefore(s,f);a._writeKey=k;a._opts=c||{}};a.SNIPPET_VERSION="4.15.3";}}();analytics.load("4ocVdM0hAo7qRCfoQB2LuEjhOYYPdQqY",{cdnURL:"https://segment-proxy.tandryukha.workers.dev",apiHost:"https://segment-proxy.tandryukha.workers.dev",host:"segment-proxy.tandryukha.workers.dev",protocol:"https"});analytics._apiHost="https://segment-proxy.tandryukha.workers.dev";analytics.page();</script></head><body><h1>Segment Analytics.js Test</h1><p>Use the buttons below to send events to your Segment source.</p><button id="track-btn">Track "Button Clicked"</button><button id="identify-btn">Identify as Jane Doe</button><script>document.getElementById("track-btn").addEventListener("click",function(){analytics.track("Button Clicked",{category:"Testing",label:"Primary Test Button"});console.log("Tracked event: Button Clicked");});document.getElementById("identify-btn").addEventListener("click",function(){analytics.identify("user-123",{name:"Jane Doe",email:"jane.doe@example.com"});console.log("Sent identify for user-123");});</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Segment Test Page</title>
+
+  <!-- Load xray -->
+  <script src="https://segment-proxy.tandryukha.workers.dev/xray.js"></script>
+  <script>
+    // Initialize xray
+    xray.init("4ocVdM0hAo7qRCfoQB2LuEjhOYYPdQqY", {
+      proxyUrl: "https://segment-proxy.tandryukha.workers.dev",
+      debug: true
+    });
+  </script>
+</head>
+<body>
+  <h1>Segment Analytics.js Test</h1>
+  <p>Use the buttons below to send events to your Segment source.</p>
+
+  <button id="track-btn">Track "Button Clicked"</button>
+  <button id="identify-btn">Identify as Jane Doe</button>
+
+  <script>
+    document.getElementById('track-btn').addEventListener('click', function() {
+      xray.track('Button Clicked', {
+        category: 'Testing',
+        label: 'Primary Test Button'
+      });
+      console.log('Tracked event: Button Clicked');
+    });
+
+    document.getElementById('identify-btn').addEventListener('click', function() {
+      xray.identify('user-123', {
+        name: 'Jane Doe',
+        email: 'jane.doe@example.com'
+      });
+      console.log('Sent identify for user-123');
+    });
+  </script>
+</body>
+</html> 
